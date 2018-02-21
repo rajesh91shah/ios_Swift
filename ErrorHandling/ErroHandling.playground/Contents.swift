@@ -68,14 +68,6 @@ func buyFavouriteSnacks(person: String, vendingMachine: VendingMachin) throws {
 }
 
 
-struct PurchasSnack {
-    let  name: String
-    init(name: String, vendingMachin: VendingMachin) throws {
-        try vendingMachin.vend(itemNamed: name)
-        self.name = name
-    }
-}
-
 var vendingMachine = VendingMachin()
 vendingMachine.coinDeposited = 8
 do {
@@ -91,5 +83,18 @@ do {
     print("Unexpected error: \(error).")
 }
 
+func nourish(with item: String) throws {
+    do {
+        try vendingMachine.vend(itemNamed: item)
+    } catch is VendingMachinError {
+        print("invalid selection, out of stock, or not enugh memeory")
+    }
+}
 
+try nourish(with: "Pretzels")
+do {
+    try nourish(with: "Pretzels")
+} catch  {
+    print("unexpected non vegetaraina error : \(error)")
+}
 
