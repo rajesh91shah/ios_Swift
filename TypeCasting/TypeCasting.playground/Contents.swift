@@ -40,7 +40,7 @@ let library = [Movies(director: "director", name: "golmal"),
 var moviesCount = 0
 var songCount = 0
 for item in library {
-    if let item = item as! Movies {
+    if let item = item as? Movies {
         moviesCount += 1
         print("item name \(item.name)")
         print("Movies class")
