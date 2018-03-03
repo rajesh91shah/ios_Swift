@@ -16,10 +16,27 @@ struct BlackJackCard {
     enum Rank: Int {
         case two = 2, three, four, five, six, seven, eight, nine
         case jack, queen, king, ace
+        
+        struct Values {
+            let firstValue: Int, secndValue: Int?
+        }
+        
+        var values: Values{
+            switch self {
+            case .ace:
+                return Values(firstValue: 1, secndValue: 11)
+            case .jack, .queen, .king, .ace:
+                return Values(firstValue: 10, secndValue: nil)
+            default:
+                return Values(firstValue: self.rawValue, secndValue: nil)
+            }
+        }
+
     }
     
-    struct values {
-        let firstValue: Int, secndValue: Int?
+    let rank: Rank, suit: Suit
+    var discription: String {
+        var output = 
     }
     
 //    print(Rank.jack)
